@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" 
+		/> -->
+		   <constant name="struts.multipart.maxSize" value="10701096"/>
+    <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+    <constant name="struts.multipart.saveDir " value="d:/tmp" />
+    <constant name="struts.multipart.paeser" value="cos"></constant>
+    
+	<package name="default" extends="json-default" namespace="/">
+		<action name="Send_*" class="com.chapelin.action.SendAction">
+			<result>{1}.jsp</result>
+		</action>
+		
+		<action name="FileUpload_*" class="com.chapelin.action.FileUploadAction">
+			 <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/images</param>
+            <result name="success">/manager/*.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1025956</param>
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+		</action>
+		<action name="*_*_*" class="com.chapelin.action.{1}Action"
+			method="{2}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="input">{3}.jsp</result>
+			<result name="admin">/manager/admin.jsp</result>
+			<result name="login">/jsp/login.jsp</result>
+			<result name="index">/jsp/index.jsp</result>
+			<result type="chain" name="specail">Pcategory_searchCategory_pcategory_detail
+			</result>
+			<result type="chain" name="specail2">Particle_searchArticle_particle_detail
+			</result>
+		</action>
+		
+
+	</package>
+
+</struts>    

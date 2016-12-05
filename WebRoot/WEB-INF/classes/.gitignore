@@ -1,0 +1,7 @@
+/applicationContext-public.xml
+/applicationContext-service.xml
+/com/
+/hibernate.cfg.xml
+/mail.properties
+/struts.xml
+/pet.sql

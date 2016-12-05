@@ -1,0 +1,24 @@
+ 	
+ 	//搜索框
+ 	<div style="width:100%;">
+	  		<div align="center">
+				<input id="ss" class="easyui-searchbox" style="width:300px" 
+				data-options="searcher:qq,prompt:'请输入相关信息'"></input> 
+			</div>
+		</div>
+	<div style="margin-top: 5px;">
+	    <table id="dg" >   
+		</table>  
+	</div>
+	//复杂的toolbar
+	Date From: <input class="easyui-datebox" style="width:80px">
+			To: <input class="easyui-datebox" style="width:80px">
+			Language: 
+			<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+				<option value="java">Java</option>
+				<option value="c">C</option>
+				<option value="basic">Basic</option>
+				<option value="perl">Perl</option>
+				<option value="python">Python</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
